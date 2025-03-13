@@ -4,14 +4,18 @@ from .models import Book, Library
 
 def list_books(request):
     books = Book.objects.all()
-    response = "\n".join([f"{book.title} by {book.author.name}" for book in books])
-    return HttpResponse(response, content_type="text/plain")
+    context = {'book_list' = books}
+    template = 'relationship_app/list_books.html'
+    return render(request, template, context)
 from django.views.generic import DetailView
 
 class LibraryDetailView(DetailView):
     model = Library
-    template_name = "library_detail.html"
-    context_object_name = "library"
+    template_name = "relationship_app/library_detail.html"
+    def get_object_data(self, **kwargs):
+        context = super().get_object_data(**kwargs)
+        book = Library.objects.all()
+        context['Library_Details'] = books
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
