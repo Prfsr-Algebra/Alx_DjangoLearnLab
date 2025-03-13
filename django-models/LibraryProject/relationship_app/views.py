@@ -14,8 +14,7 @@ class LibraryDetailView(DetailView):
     template_name = "relationship_app/library_detail.html"
     def get_object_data(self, **kwargs):
         context = super().get_object_data(**kwargs)
-        book = Library.objects.all()
-        context['Library_Details'] = self.objects.books.all()
+        context['Library_Details'] = self.object.books.all()
         return context
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
