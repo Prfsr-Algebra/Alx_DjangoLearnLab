@@ -15,7 +15,8 @@ class LibraryDetailView(DetailView):
     def get_object_data(self, **kwargs):
         context = super().get_object_data(**kwargs)
         book = Library.objects.all()
-        context['Library_Details'] = books
+        context['Library_Details'] = self.objects.books.all()
+        return context
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
