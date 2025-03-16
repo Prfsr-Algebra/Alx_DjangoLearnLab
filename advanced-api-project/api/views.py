@@ -1,4 +1,4 @@
-"""
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -30,7 +30,6 @@ from rest_framework.filters import OrderingFilter
 class BookListView(generics.ListCreateAPIView):
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     ordering_fields = ['title', 'publication_year']
-"""
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Book  # Replace with your model
