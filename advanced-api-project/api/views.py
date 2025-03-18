@@ -9,6 +9,7 @@ from .models import Book
 from .serializers import BookSerializer
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.permissions import IsAuthenticated
+from django_filters import rest_framework as filters
 
 class MyView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
